@@ -1,0 +1,36 @@
+﻿@model DeAnCNPMNC.Models.Employee
+
+@{
+    Layout = null;
+}
+
+<style>
+    field-validation-error {
+        color: red;
+    }
+</style>
+<h2>Login</h2>
+@using (Html.BeginForm("LoginAccount", "Login", FormMethod.Post))
+{   
+    <table>
+        <tr>
+            <td>@Html.LabelFor(model => model.AccountEmp)</td>
+            <td>@Html.TextBoxFor(model => model.AccountEmp, new { style = "field-validation-error" })</td>
+            <td>@Html.ValidationMessageFor(model => model.AccountEmp)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(model => model.PassEmp)</td>
+            <td>@Html.PasswordFor(model => model.PassEmp)</td>
+            <td>@Html.ValidationMessageFor(model => model.PassEmp)</td>
+            @if (ViewBag.ErrorInfo == null)
+            {
+                @ViewBag.ErrorInfo
+            }
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="login" /></td>
+        </tr>
+    </table>
+
+}
